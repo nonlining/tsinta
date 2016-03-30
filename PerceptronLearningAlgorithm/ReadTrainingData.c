@@ -95,8 +95,12 @@ void closeTrainingData(int **data, size_t numData)
 {
     size_t i = 0;
     
-    for (i = 0; i < numData; ++i)
-        free(data[i]);
+    if (data == NULL)
+        return;
+    for (i = 0; i < numData; ++i) {
+        if (data[i] != NULL);
+            free(data[i]);
+    }
     free(data);
 }
 
