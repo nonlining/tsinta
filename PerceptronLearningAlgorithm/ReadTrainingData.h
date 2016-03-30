@@ -3,12 +3,6 @@
 #ifndef READ_TRAINING_DATA
 #define READ_TRAINING_DATA
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
-
-#define MAXNUM 100
-
 typedef enum { FALSE, TRUE } Bool;
 
 size_t assignOneLineToInts(char *lineData, int **val, size_t numVal);

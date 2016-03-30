@@ -1,6 +1,11 @@
 /*Read Training Data*/
 /*Author: tsinta*/
+#include <stdio.h>
+#include <stdlib.h>
+#include <ctype.h>
 #include "ReadTrainingData.h"
+
+#define MAXNUM 100
 
 void* revisedRealloc(void **ptr, size_t sz, char *funcName)
 {
