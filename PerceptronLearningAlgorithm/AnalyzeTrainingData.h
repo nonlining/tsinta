@@ -18,8 +18,8 @@ typedef struct {
 PLAData* convertToPLAData(int **data, size_t numData, size_t numVal);
 /*example: data = {1,2,1} => pData = {1,2,GOOD}*/
 
-Weight genInitWeight(PLAData pData, size_t numPLAVal);
-/*malloc weight and set val by pData*/
+Weight genInitWeight(size_t numPLAVal);
+/*malloc weight and set as 0 vector*/
 
 int checkPLAData(PLAData pData, Weight wt, size_t numPLAVal);
 /*example: PLAData->{1, 2, GOOD}, wt->{-1, 1, threshold=-1} => 1*-1+2*1>-1, correct*/

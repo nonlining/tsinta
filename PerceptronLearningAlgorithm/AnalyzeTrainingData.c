@@ -1,6 +1,5 @@
 /*Analyze training data*/
 /*Author: tsinta*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "AnalyzeTrainingData.h"
@@ -24,23 +23,21 @@ PLAData* convertToPLAData(int **data, size_t numData, size_t numVal)
     return pData;
 }
 
-Weight genInitWeight(PLAData pData, size_t numPLAVal)
+Weight genInitWeight(size_t numPLAVal)
 {
-    /*pData: the first PLA data*/
     /*out: init weight*/
-    size_t i;   /*idx of pData.val*/
+    size_t i;   /*idx of wt.w*/
     Weight wt;  /*init weight, it will malloc wt.w*/
     
     wt.w = (int*)malloc(sizeof(int) * numPLAVal);
-    
     if(wt.w == NULL) {
         fprintf(stderr, "Failed to malloc in genInitWeight\n");
         wt.threshold = 0;
         return wt;
     }
     for (i = 0; i < numPLAVal; ++i)
-        wt.w[i] = ((pData.isGood == GOOD) ? pData.val[i] : -pData.val[i]);
-    wt.threshold = ((pData.isGood == GOOD) ? -1 : 1);
+        wt.w[i] = 0;
+    wt.threshold = 0;
     return wt;
 }
 
@@ -76,7 +73,7 @@ int checkIfWeightIsZero(Weight wt, size_t numPLAVal)
         if (wt.w[i] != 0)
             return wt.w[i];
     }
-    return 0;
+    return wt.threshold;
 }
 
 size_t countNumCorrect(PLAData *pData, Weight wt, size_t numData, size_t numPLAVal)
@@ -138,9 +135,8 @@ int main()
     }
     size_t numPLAVal = numVal - 1;
     int idx;
-    scanf("%d", &idx);
     if (idx < numData) {
-        Weight wt = genInitWeight(pData[idx], numPLAVal);
+        Weight wt = genInitWeight(numPLAVal);
         while(1) {
             showWeight(wt, numPLAVal);
             scanf("%d", &idx);
@@ -158,7 +154,6 @@ int main()
     }
     if (data != NULL)
         closeTrainingData(data, numData);
-    
     return 0;
 }
 */
